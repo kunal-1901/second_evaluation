@@ -1,0 +1,308 @@
+  :root {
+  /* Light theme variables */
+  --light-bg-primary: #f5f5f5;
+  --light-bg-secondary: #e0e0e0;
+  --light-bg-dropdown: #ffffff;
+  --light-text-primary: #ffff;
+  --light-text-secondary: #666666;
+  --light-border-color: #dddddd;
+  --light-modal-bg: #ffffff;
+  --light-input-bg: #f5f5f5;
+  --light-typebot-bg: #e0e0e0;
+  --light-typebot-card: #0056b3;
+
+  /* Dark theme variables */
+  --dark-bg-primary: #1a1a1a;
+  --dark-bg-secondary: #292929;
+  --dark-bg-dropdown: #292929;
+  --dark-text-primary: #ffffff;
+  --dark-text-secondary: #cccccc;
+  --dark-border-color: #444444;
+  --dark-modal-bg: #292929;
+  --dark-input-bg: #1c1c1c;
+  --dark-typebot-bg: #444444;
+  --dark-typebot-card: #007bff;
+
+  /* Common variables */
+  --primary-blue: #2196f3;
+  --danger-red: #ff4c4c;
+  --success-green: #4caf50;
+}
+
+/* Apply theme variables based on data-theme attribute */
+[data-theme="light"] {
+  --bg-primary: var(--light-bg-primary);
+  --bg-secondary: var(--light-bg-secondary);
+  --bg-dropdown: var(--light-bg-dropdown);
+  --text-primary: var(--light-text-primary);
+  --text-secondary: var(--light-text-secondary);
+  --border-color: var(--light-border-color);
+  --modal-bg: var(--light-modal-bg);
+  --input-bg: var(--light-input-bg);
+  --typebot-bg: var(--light-typebot-bg);
+  --typebot-card: var(--light-typebot-card);
+}
+
+[data-theme="dark"] {
+  --bg-primary: var(--dark-bg-primary);
+  --bg-secondary: var(--dark-bg-secondary);
+  --bg-dropdown: var(--dark-bg-dropdown);
+  --text-primary: var(--dark-text-primary);
+  --text-secondary: var(--dark-text-secondary);
+  --border-color: var(--dark-border-color);
+  --modal-bg: var(--dark-modal-bg);
+  --input-bg: var(--dark-input-bg);
+  --typebot-bg: var(--dark-typebot-bg);
+  --typebot-card: var(--dark-typebot-card);
+}
+
+.container {
+    margin: 20px auto;
+    width: 80%;
+    height: 100%;
+ color: var(--dark-text-primary);
+  }
+  
+  .card {
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+  }
+  
+  .cardHeader {
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid var(--dark-border-color);
+    font-weight: 600;
+    font-size: 1.125rem;
+     color: var(--dark-text-primary);
+     background-color: var(--dark-bg-primary);
+  }
+  
+  .cardContent {
+    padding: 1.5rem;
+  }
+  
+  .statsGrid {
+    display: flex;
+    /* grid-template-columns: repeat(1, 1fr); */
+    justify-content: space-around;
+    gap: 50px;
+    margin-bottom: 1.5rem;
+  }
+  
+  @media (min-width: 768px) {
+    .statsGrid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  
+  .statCard {
+    text-align: center;
+    padding: 1.5rem;
+   background-color: var(--dark-bg-secondary);
+    height: 40%;
+
+  }
+  
+  .statValue {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+  
+  .statLabel {
+    color: #ffffff;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  
+  .tableCard {
+    margin-bottom: 1.5rem;
+   background-color: var(--dark-bg-primary);
+  }
+  
+  
+  .tableWrapper {
+    max-height: 240px; /* Height for 3 rows + header */
+    overflow-y: auto;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    margin: 0;
+    position: relative;
+    background-color: var(--bg-primary);
+  }
+
+  
+  .responseTable {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: var(--dark-bg-secondary);
+    position: relative;
+  }
+  .responseTable [data-theme="light"]{
+     background-color: var(--light-bg-primary);
+  }
+  
+  /* Sticky header */
+  .responseTable thead {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+  }
+  
+  .responseTable th {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-weight: 600;
+    text-align: left;
+    padding: 12px 16px;
+    border: 1px solid var(--border-color);
+    white-space: nowrap;
+  }
+  
+  .responseTable td {
+    padding: 12px 16px;
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-primary);
+  }
+  
+  .responseTable tr:nth-child(even) td {
+    background-color: var(--bg-primary);
+  }
+  
+  /* Row hover effect */
+  .responseTable tbody tr:hover td {
+    background-color: var(--bg-dropdown);
+  }
+  
+  /* Checkbox cell styling */
+  .checkboxCell {
+    width: 48px;
+    text-align: center;
+  }
+  
+  /* Custom scrollbar styling */
+  .tableWrapper::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  .tableWrapper::-webkit-scrollbar-track {
+    background: var(--bg-secondary);
+    border-radius: 4px;
+  }
+  
+  .tableWrapper::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+    border-radius: 4px;
+  }
+  
+  .tableWrapper::-webkit-scrollbar-thumb:hover {
+    background: var(--text-secondary);
+  }
+  
+
+
+
+.logsButton {
+  background-color: var(--dark-button-bg);
+  color: var(--dark-text-secondary);
+  padding: 0.375rem 0.75rem;
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  transition: background-color 0.2s;
+}
+
+.logsButton:hover {
+  background-color: var(--dark-button-hover);
+}
+  .chartCard {
+    margin-bottom: 1.5rem;
+  }
+  
+  .chartContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 1rem;
+    padding-right: 1rem;
+    padding-left: 1rem;
+    padding-top: 0px;
+  }
+  
+  .chartWrapper {
+    height: 16rem;
+    width: 16rem;
+  }
+  
+  .completionRate {
+   border-radius: 8%;
+    text-align: center;
+    padding: 1.5rem;
+    background-color: #323232;
+    height: 40%;
+  }
+  
+  .rateNumber {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #1a5fff;
+    line-height: 1;
+  }
+  
+  .rateLabel {
+    color: #64748b;
+    margin-top: 0.5rem;
+  }
+  .completion{
+    color: #ffffff;
+  }
+  .completion .lightMode{
+    color: #000000;
+  }
+  
+  /* Dark mode styles */
+  @media (prefers-color-scheme: dark) {
+    .card {
+      background: #1a1a1a;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    }
+  
+    .cardHeader {
+      border-bottom-color: #2d2d2d;
+      color: #ffffff;
+    }
+  
+    .statValue {
+      color: #60a5fa;
+    }
+  
+    .statLabel {
+      color: #9ca3af;
+    }
+  
+    .responseTable th,
+    .responseTable td {
+      border-bottom-color: #2d2d2d;
+    }
+  
+    .responseTable th {
+      background-color: #2d2d2d;
+      color: #e5e7eb;
+    }
+  
+    .responseTable tr:hover {
+      background-color: #2d2d2d;
+    }
+  
+    .rateNumber {
+      color: #60a5fa;
+    }
+  
+    .rateLabel {
+      color: #9ca3af;
+    }
+  }
